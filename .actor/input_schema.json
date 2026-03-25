@@ -1,0 +1,13 @@
+{
+  "title": "Input",
+  "type": "object",
+  "schemaVersion": 1,
+  "properties": {
+    "path": {
+      "title": "Project Path",
+      "type": "string",
+      "description": "Path to the project directory to analyze",
+      "editor": "textfield"
+    }
+  }
+}

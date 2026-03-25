@@ -3,23 +3,11 @@
   "name": "codebase-doc-generator",
   "title": "Codebase Documentation Generator",
   "description": "MCP server that auto-generates documentation from any codebase. Architecture analysis, dependency graphs, API docs, README — all local, zero external APIs.",
-  "version": "1.0.0",
+  "version": "1.0",
   "buildTag": "latest",
-  "environmentVariables": [],
+  "environmentVariables": {},
   "dockerfile": "../Dockerfile",
   "readme": "../README.md",
-  "input": {
-    "actorInputSchemaVersion": 1,
-    "title": "Input",
-    "type": "object",
-    "properties": {
-      "path": {
-        "title": "Project Path",
-        "type": "string",
-        "description": "Path to the project directory to analyze",
-        "editor": "textfield"
-      }
-    }
-  },
+  "input": "./input_schema.json",
   "storages": {}
 }
