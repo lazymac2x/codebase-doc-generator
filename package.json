@@ -1,0 +1,33 @@
+{
+  "name": "codebase-doc-generator",
+  "version": "1.0.0",
+  "description": "MCP server that auto-generates documentation from any codebase. Scans architecture, maps dependencies, extracts APIs, generates README — all local, zero external APIs. Reduces LLM context window usage by 70%.",
+  "main": "src/server.js",
+  "bin": {
+    "codebase-doc-generator": "src/server.js"
+  },
+  "scripts": {
+    "start": "node src/server.js",
+    "test": "node test.js"
+  },
+  "keywords": [
+    "mcp",
+    "documentation",
+    "codebase",
+    "ai",
+    "llm",
+    "readme",
+    "api-docs",
+    "dependency-graph",
+    "mermaid",
+    "code-analysis",
+    "developer-tools",
+    "model-context-protocol"
+  ],
+  "author": "lazymac",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.21.2"
+  }
+}

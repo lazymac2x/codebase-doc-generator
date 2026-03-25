@@ -1,0 +1,88 @@
+openapi: 3.1.0
+info:
+  title: Codebase Doc Generator
+  version: 1.0.0
+  description: |
+    MCP server that auto-generates documentation from any codebase.
+    Scans architecture, maps dependencies, extracts APIs, generates README.
+    All local, zero external APIs. Reduces LLM context window usage by 70%.
+servers:
+  - url: http://localhost:3000
+paths:
+  /:
+    get:
+      operationId: healthCheck
+      summary: Health check and server info
+      responses:
+        "200":
+          description: Server status and available tools
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  version:
+                    type: string
+                  tools:
+                    type: array
+                    items:
+                      type: string
+                  status:
+                    type: string
+  /mcp:
+    post:
+      operationId: mcpEndpoint
+      summary: Model Context Protocol endpoint
+      description: |
+        JSON-RPC 2.0 endpoint implementing the MCP protocol.
+        Supported methods: initialize, tools/list, tools/call
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [method]
+              properties:
+                jsonrpc:
+                  type: string
+                  default: "2.0"
+                id:
+                  type: [string, integer]
+                method:
+                  type: string
+                  enum:
+                    - initialize
+                    - tools/list
+                    - tools/call
+                params:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                      description: Tool name (for tools/call)
+                    arguments:
+                      type: object
+                      description: Tool arguments (for tools/call)
+                      properties:
+                        path:
+                          type: string
+                          description: Absolute path to project directory
+      responses:
+        "200":
+          description: MCP response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                  id:
+                    type: [string, integer]
+                  result:
+                    type: object
+                  error:
+                    type: object

@@ -1,0 +1,5 @@
+name: codebase-doc-generator
+runtime: container
+port: 3000
+path: /mcp
+healthCheck: /
